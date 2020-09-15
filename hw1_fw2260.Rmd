@@ -58,10 +58,18 @@ as.numeric(as.factor(pull(prob1_df, vec_gt_0))) * pull(prob1_df, vec_numeric)
 
 ## Problem 2
 
-Load the penguins dataset:
+Load the **penguins** dataset:
 
-```{r}
+```{r load_penguins}
 data("penguins", package = "palmerpenguins")
 ```
 
-The size of this dataset is `r nrow(penguins)` rows by `r ncol(penguins)` columns. The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), digits = 2)` mm.
+The **penguins** dataset contains the following information: `r names(penguins)`. The different species are `r unique(pull(penguins, species))`. The different islands are `r unique(pull(penguins, island))`. The size of this dataset is `r nrow(penguins)` rows by `r ncol(penguins)` columns. The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), digits = 2)` mm.
+
+Scatter plot of **flipper length vs bill length by species**:
+
+```{r penguins_plot}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggsave("bill_lengthVSflipper_length_plot.pdf", height = 4, width = 6)
+```
+
