@@ -1,41 +1,48 @@
 ---
-title: "hw1_fw2260"
+title: "Homework 1"
 author: "Lily Wang"
 date: "9/14/2020"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+This is my solution to HW1.
 
-## R Markdown
-
-First part of Problem 1, creating a data frame with the required columns: 
-
-```{r cars}
+```{r libraries}
 library(tidyverse)
-df <- tibble(
+```
+
+
+## Problem 1
+
+First part of Problem 1, creating a data frame with the required elements: 
+
+```{r create_df}
+prob1_df <- tibble(
   vec_numeric = rnorm(10),
-  vec_logical = vec_numeric > 0,
-  vec_character = ,
-  vec_factor = 
+  vec_gt_0 = vec_numeric > 0,
+  vec_character = c("q","w","e","r","t","y","u","i","o","p"),
+  vec_factor = factor(c("low","high","mod","high","mod","mod","low","mod","low","high"))
 )
-df
-
-mean(df$vec_numeric)
-mean(df$vec_logical)
-mean(df$vec_character)
-mean(df$vec_factor)
-```
-As seen from the error messages, only taking 
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+prob1_df
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Take the mean of each variable from my dataframe.
+
+```{r means}
+mean(pull(prob1_df, vec_numeric))
+mean(pull(prob1_df, vec_gt_0))
+mean(pull(prob1_df, vec_character))
+mean(pull(prob1_df, vec_factor))
+```
+
+As seen from the warning messages, only taking the mean of the numeric and logical vectors work.
+
+```{r convert_numeric}
+as.numeric(pull(prob1_df, vec_numeric))
+as.numeric(pull(prob1_df, vec_gt_0))
+as.numeric(pull(prob1_df, vec_character))
+as.numeric(pull(prob1_df, vec_factor))
+```
+
+
+## Problem 2
