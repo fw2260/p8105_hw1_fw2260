@@ -35,14 +35,33 @@ mean(pull(prob1_df, vec_character))
 mean(pull(prob1_df, vec_factor))
 ```
 
-As seen from the warning messages, only taking the mean of the numeric and logical vectors work.
+As seen from the warning messages, only taking the mean of the numeric and logical vectors work. 
 
-```{r convert_numeric}
-as.numeric(pull(prob1_df, vec_numeric))
+Now, I will convert the logical, character, and factor vectors into numeric without showing the results:
+
+```{r convert_numeric, echo = FALSE}
 as.numeric(pull(prob1_df, vec_gt_0))
 as.numeric(pull(prob1_df, vec_character))
 as.numeric(pull(prob1_df, vec_factor))
 ```
+The character vector could not be coerced into numeric, but the factor vector could, which does not explain what happens when I tried to take the mean as the mean could not be calculated for the factors.
+
+Now I will convert and multiply by the random sample as directed:
+
+```{r}
+as.numeric(pull(prob1_df, vec_gt_0)) * pull(prob1_df, vec_numeric)
+as.factor(pull(prob1_df, vec_gt_0)) * pull(prob1_df, vec_numeric)
+as.numeric(as.factor(pull(prob1_df, vec_gt_0))) * pull(prob1_df, vec_numeric)
+```
+
 
 
 ## Problem 2
+
+Load the penguins dataset:
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+The size of this dataset is `r nrow(penguins)` rows by `r ncol(penguins)` columns. The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), digits = 2)` mm.
