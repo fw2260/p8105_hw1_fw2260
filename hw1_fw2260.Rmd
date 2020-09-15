@@ -1,0 +1,41 @@
+---
+title: "hw1_fw2260"
+author: "Lily Wang"
+date: "9/14/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+First part of Problem 1, creating a data frame with the required columns: 
+
+```{r cars}
+library(tidyverse)
+df <- tibble(
+  vec_numeric = rnorm(10),
+  vec_logical = vec_numeric > 0,
+  vec_character = ,
+  vec_factor = 
+)
+df
+
+mean(df$vec_numeric)
+mean(df$vec_logical)
+mean(df$vec_character)
+mean(df$vec_factor)
+```
+As seen from the error messages, only taking 
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
