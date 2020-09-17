@@ -80,7 +80,10 @@ The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.r
 Scatter plot of **flipper length vs bill length by species**:
 
 ```{r penguins_plot}
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  geom_point() +
+  labs(x = "Bill Length (mm)", y = "Flipper Length (mm)", color = "Species")  
+
 ggsave("bill_lengthVSflipper_length_plot.pdf", height = 4, width = 6)
 ```
 
