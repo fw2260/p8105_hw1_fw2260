@@ -64,7 +64,18 @@ Load the **penguins** dataset:
 data("penguins", package = "palmerpenguins")
 ```
 
-The **penguins** dataset contains the following information: `r names(penguins)`. The different species are `r unique(pull(penguins, species))`. The different islands are `r unique(pull(penguins, island))`. The size of this dataset is `r nrow(penguins)` rows by `r ncol(penguins)` columns. The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), digits = 2)` mm.
+The **penguins** dataset is `r nrow(penguins)` rows by `r ncol(penguins)` columns and contains information for the following: **`r names(penguins)`**. 
+
+**`r names(penguins)[1]`**: Categorical. Species of penguins studied. Possible values are: `r unique(pull(penguins, species))`. \
+**`r names(penguins)[2]`**: Categorical. Island where data were acquired from. Possible values are: `r unique(pull(penguins, island))`. \
+**`r names(penguins)[3]`**: Double. Length of the penguin's bill in millimeters. \
+**`r names(penguins)[4]`**: Double. Depth of the penguin's bill in millimeters. \
+**`r names(penguins)[5]`**: Integer. Length of the penguin's flipper in millimeters. \
+**`r names(penguins)[6]`**: Integer. Penguin's body mass in grams. \
+**`r names(penguins)[7]`**: Categorical. Penguin's sex. Possible values are: `r unique(na.omit(pull(penguins, sex)))`. \
+**`r names(penguins)[8]`**: Integer. Year in which the data were collected.
+
+The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), digits = 2)` mm.
 
 Scatter plot of **flipper length vs bill length by species**:
 
